@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container"></div>
+    <script>
+        const containerElement = document.querySelector('.container');
+        const json = {
+            'nombre': 'Juan',
+            'edad': 25,
+        }
+        const json2 = {
+            'nombre': 'Pedro',
+            'edad': 30,
+        }
+        const json3 = {
+            'nombre': 'Maria',
+            'edad': '35',
+        }
+        const json4 = {
+            'nombre': 'Jose',
+            'edad': 40,
+        }
+        localStorage.setItem('json', JSON.stringify(json));
+        localStorage.setItem('json2', JSON.stringify(json2));
+        localStorage.setItem('json3', JSON.stringify(json3));
+        localStorage.setItem('json4', JSON.stringify(json4));
+        const jsons = [];
+        for (let i = 0; i < localStorage.length; i++) {
+            jsons.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+        }
+        console.log(jsons);
+    </script>
+</body>
+</html>

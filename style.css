@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 body {
     /* https://coolors.co/f06449-ede6e3-7d82b8-36382e-613f75  */
     --background-color: #ede6e3;
@@ -9,13 +10,19 @@ body {
     --text-color: #210124;
 
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--background-color);
 }
 
 html,
 body {
     height: 100%;
     margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: glow1 3s infinite !important;
 }
 
 #center {
@@ -145,6 +152,7 @@ body {
     font-size: 0.8em;
     color: var(--text-color);
     transition: opacity 2s;
+    font-family: "Press Start 2P", system-ui;
 }
 
 a:visited {
@@ -196,3 +204,27 @@ a:visited {
     width: 18px;
     height: 18px;
 }
+
+@keyframes glow1 {
+    0%, 100% {
+        background-color: rgb(0, 79, 128);
+    }
+    50% {
+        background-color: rgb(0, 208, 255);
+    }   
+};
+
+@keyframes glow2 {
+    0%, 100% {
+        background-color: rgb(255, 25, 0);
+    }
+    25% {
+        background-color: rgb(255, 251, 0);
+    }
+    50% {
+        background-color: rgb(0, 255, 0);
+    }
+    75% {
+        background-color: rgb(0, 255, 191);
+    }
+};

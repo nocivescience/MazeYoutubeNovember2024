@@ -212,9 +212,10 @@ walls.forEach(({ x, y, horizontal, length }) => {
         left: ${x}px;
         top: ${y}px;
         width: ${wallW}px;
+        animation: glow1 1s infinite;
         height: ${length}px;
         transform: rotate(${horizontal ? -90 : 0}deg);
-      `;
+    `;
 
     mazeElement.appendChild(wall);
 });
