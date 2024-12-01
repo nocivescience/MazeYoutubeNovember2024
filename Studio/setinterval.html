@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="reloj"></div>
+    <script>
+        const reloj = document.querySelector('.reloj');
+        let segundos = 10;
+
+        function actualizarReloj() {
+            reloj.innerHTML = segundos;
+        }
+
+        function reiniciarJuego() {
+            segundos = 10;
+            actualizarReloj();
+            comenzarCuentaRegresiva();
+        }
+
+        function comenzarCuentaRegresiva() {
+            // Inicia la cuenta regresiva
+            const intervalo = setInterval(() => {
+                segundos--;
+
+                if (segundos <= 0) {
+                    clearInterval(intervalo); // Detenemos el setInterval
+                    setTimeout(() => {
+                        reloj.innerHTML = 'Game Over'; // Muestra el mensaje de Game Over
+                        setTimeout(() => {
+                            reiniciarJuego(); // Reinicia el contador después de 1 segundo
+                        }, 1000); 
+                    }, 1000); 
+                } else {
+                    actualizarReloj();
+                }
+            }, 1000);
+        }
+
+        // Comienza el juego
+        comenzarCuentaRegresiva();
+    </script>
+</body>
+</html>

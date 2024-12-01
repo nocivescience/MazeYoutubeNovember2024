@@ -2,6 +2,11 @@ Math.minmax = (value, limit) => {
     return Math.max(Math.min(value, limit), -limit);
 };
 
+let score=15;
+
+const scoreEl=document.querySelector(".score");
+const gameOverEl= document.querySelector(".game-over");
+
 const distance2D = (p1, p2) => {
     return Math.sqrt((p2.x - p1.x) ** 2 + (p2.y - p1.y) ** 2);
 };
@@ -314,10 +319,14 @@ function resetGame() {
     accelerationY = undefined;
     frictionX = undefined;
     frictionY = undefined;
+    score=15;
+    gameOverEl.style.opacity=0.1;
 
     mazeElement.style.cssText = `
         transform: rotateY(0deg) rotateX(0deg)
       `;
+
+    scoreEl.innerHTML=`Score: ${score}`;
 
     joystickHeadElement.style.cssText = `
         left: 0;
@@ -375,7 +384,14 @@ function resetGame() {
 function main(timestamp) {
     // It is possible to reset the game mid-game. This case the look should stop
     if (!gameInProgress) return;
-
+    setInterval(function(){
+        score--;
+        scoreEl.innerHTML=`Score: ${score}`;
+    }, 1000);
+    if(score<=0){
+        gameOverEl.style.opacity=1;
+        resetGame();
+    };
     if (previousTimestamp === undefined) {
         previousTimestamp = timestamp;
         window.requestAnimationFrame(main);
